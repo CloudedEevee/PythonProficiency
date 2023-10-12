@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="content cntr">
+        <!-- Navbar -->
+        <div class="nav flex">
+            <h1 id="title">Ninjas</h1>
+            <a href="/dojos">Home</a>
+        </div>
+    
+        <!-- Ninja Data Table -->
+        <div class="border flex cntr vert_cntr">
+            <h2 style="width: 100%;">Add a Ninja</h2>
+            <form action="/ninjas" method="POST" class="user_input space">
+                <select name="dojo_id" id="dojo_id">
+                    {% for dojo in all_dojos %}
+                        <option value="{{dojo.id}}">{{dojo.name}}</option>
+                    {% endfor %}
+                </select>
+    
+                <div>
+                    <label for="first_name">First Name: </label>
+                    <input type="text" name="first_name">
+                </div>
+    
+                <div>
+                    <label for="last_name">Last Name: </label>
+                    <input type="text" name="last_name">
+                </div>
+    
+                <div>
+                    <label for="age">Age: </label>
+                    <input type="text" name="age">
+                </div>
+    
+                <button type="submit" class="btn_s space">Add Ninja</button>
+            </form>
+    
+        </div>
+    </div>    
+
+
+</body>
+</html>
+
+<!-- Format for adding images -->
+<!-- <img src="{{ url_for('static', filename='images/img.png') }}"> -->

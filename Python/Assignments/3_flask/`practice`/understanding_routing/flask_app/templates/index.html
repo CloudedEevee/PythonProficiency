@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <title>Understanding Routing</title>
+</head>
+<body>
+    <div class="content cntr">
+        <!-- Navbar -->
+        <div class="nav flex cntr space">
+            <div class="navtop flex separate cntr">
+                <h1 id="title">Understanding Routing</h1>
+                <div class="flex">
+                    <form action="{{ url_for('index') }}">
+                        <button type="submit" class="link_btn">Home</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="cntr space">Hello World!</h2>
+        <!-- Directory -->
+        <div class="cntr flex">
+            <div class="cntr flex start">
+                <h3 class="title">Directory</h3>
+            </div>
+            <!-- Dojo -->
+            <div class="cont_box border cntr flex">
+                <form action="/dojo" class="user_input cntr space_m">
+                    <div class="space">
+                        <label for="submit">Go to Dojo</label>
+                    </div>
+                    <button type="submit" class="btn_s">Dojo</button>
+                </form>
+            </div>
+            <!-- Say -->
+            <div class="cont_box border cntr flex">
+                <form action="/say/<this_name>" method="POST" class="user_input cntr space_m">
+                    <div class="space">
+                        <label for="this_name">Let us say hi!</label>
+                        <input type="text" placeholder="Please enter your name" name="this_name">
+                    </div>
+                    <button type="submit" class="btn_s">Say Hi!</button>
+                </form>
+            </div>
+            <!-- Repeat -->
+            <div class="cont_box border cntr flex">
+                <form action="/repeat" method="POST" class="user_input cntr space_m">
+                    <div class="space">
+                        <label for="phrase">What would you like us to tell you?</label>
+                        <input type="text" placeholder="Please enter a phrase" name="phrase">
+                    </div>
+                    <div class="space">
+                        <label for="num">How many times would you like us to tell you?</label>
+                        <input type="number" placeholder="Please enter a number" name="num">
+                    </div>
+                    <button type="submit" class="btn_s">Repeat this!</button>
+                </form>
+        
+            </div>
+        </div>
+    </div>
+
+
+
+
+    
+
+</body>
+</html>

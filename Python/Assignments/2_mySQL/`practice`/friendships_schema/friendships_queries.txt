@@ -1,0 +1,2 @@
+INSERT INTO users (first_name, last_name, username, email, pw)
+VALUES ("Test", "McTesterson", "testyboi", "test@email.com", "Password1"), ("Diane", "Elma", "dianeelma", "grinding@email.com", "Password1"), ("Adrian", "Agreste", "clawsout", "clawsout@email.com", "Password1"), //more needed

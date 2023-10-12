@@ -1,0 +1,169 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    font-family: Roboto;
+}
+
+html {
+    background-color: lavender;
+    color: darkslateblue;
+}
+
+body {
+    width: 96vw;
+    padding: 16px;
+    margin: auto;
+
+    flex-wrap: nowrap;
+}
+
+
+/* GENERAL CONTENT */
+.space {
+    margin: 16px;
+}
+.cntr {
+    width: 100%;
+    text-align: center;
+    margin: auto;
+}
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.vert_cntr {
+    /* height: 96%; */
+    align-self: center;
+}
+.separate {
+    justify-content: space-between;
+}
+
+.border {
+    width: max-content;
+    border: 4px inset rgb(41, 38, 70);
+    padding: 16px;
+}
+
+#title {
+    font-size: 24pt;
+    color: darkslateblue;
+}
+
+
+
+/* ELEMENT SPECIFIC */
+.nav {
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+    /* Forms */
+.user_input div {
+    font-size: 18pt;
+}
+.user_input input {
+    font-size: 14pt;
+}
+
+    /* Links */
+.btn_s {
+    background-color: aliceblue;
+    color: rgb(103, 99, 141);
+    font-size: 12pt;
+
+    border-color: rgb(4, 4, 35);
+    border-style: solid;
+    box-shadow: 2px 2px rgb(4, 4, 35);
+
+    padding: 4px 8px;
+}
+.btn_s:hover {
+    background-color: rgb(41, 38, 70);
+    color: aliceblue;
+
+    border: 2px inset aliceblue;
+    box-shadow: none;
+
+    transition-duration: 50ms
+}
+
+.link-btn {
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    padding-left: 4px;
+    font-size: 10pt;
+    text-decoration: none;
+}
+
+#danger_btn {
+    background-color: lavenderblush;
+    color: crimson;
+    font-size: 10pt;
+
+    border-color: darkred;
+    border-style: solid;
+    box-shadow: 2px 2px rgb(54, 8, 8);
+
+    padding: 4px 8px;
+}
+#danger_btn:hover {
+    background-color: crimson;
+    color: lavenderblush;
+
+    border: 2px inset rgb(54, 8, 8);
+    box-shadow: none;
+
+    transition-duration: 50ms
+}
+
+
+/* Page Specific */
+    /* index.html */
+.container h1 {
+    width: 100%;
+}
+
+
+    /* read_all.html */
+table {
+    margin: 16px 0px;
+    border-collapse: collapse;
+    font-size: 16pt;
+}
+table, thead{
+    border: 1px solid rgb(41, 38, 70);
+}
+thead {
+    background-color: rgb(217, 217, 249);
+}
+#add_new_user {
+    justify-content: start;
+}
+
+
+    /* new_user.html */
+
+
+    /* show_user.html */
+.user_info {
+    margin: 16px;
+}
+.user_info p {
+    width: 100%;
+    background-color: aliceblue;
+    padding: 4px 16px;
+}
+
+    /* edit_user.html */
+.danger_zone {
+    justify-content: start;
+}
+
+
+/* User Info is actually just Space repeated. Replace all ".user_info" in HTML with ".space" */

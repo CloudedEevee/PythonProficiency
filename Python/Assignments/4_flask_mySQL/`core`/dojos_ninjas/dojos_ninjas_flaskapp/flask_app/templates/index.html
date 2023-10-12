@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="content cntr ">
+        <h1 class="space">Welcome!</h1>
+    
+        <div class="border cntr space">
+            <form action="/dojos" class="user_input space">
+                <button type="submit" class="btn_s">Dojos</button>
+            </form>
+    
+            <form action="/ninjas" class="user_input space">
+                <button type="submit" class="btn_s">Ninjas</button>
+            </form>
+        </div>
+    </div>    
+
+</body>
+</html>
+
+<!-- Format for adding images -->
+<!-- <img src="{{ url_for('static', filename='images/img.png') }}"> -->

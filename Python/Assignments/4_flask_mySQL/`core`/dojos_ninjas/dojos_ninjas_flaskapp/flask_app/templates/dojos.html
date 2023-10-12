@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="nav cntr">
+        <h1 id="title">Our Dojos</h1>
+    </div>
+
+    <!-- Content -->
+    <div class="border flex separate cntr vert_cntr">
+        <!-- Titles -->
+        <div class="flex cntr vert_cntr separate">
+            <h2>Add a Dojo</h2>
+            <h2>All Dojos</h2>
+        </div>
+
+        <div class="flex cntr separate">
+            <!-- left side: NEW DOJO -->
+            <div class="flex dojo_box start">
+                <form action="/dojos/new" method="post" class="user_input flex">
+                    <div class="space">
+                        <label for="name">Dojo Location:</label>
+                        <input type="text" name="name" id="name">
+                    </div>
+                    <button type="submit" class="btn_s">Create</button>
+                </form>
+            </div>
+                
+            <!-- right side: ALL DOJOS-->
+            <div class="flex dojo_box end">
+                <div class="border" id="all_dojos">
+                    {% for dojo in all_dojos %}
+                    <a href="{{url_for('show_dojo', dojo_id = dojo.id)}}" class="flex dojo_list">{{dojo.name}}</a>
+                    {% endfor %}
+                </div>
+                    <!-- for loop that lists all the dojos as <a> tags: scroll? -->
+                <a href="/ninjas" class="link_btn space">Add Ninja</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+<!-- Format for adding images -->
+<!-- <img src="{{ url_for('static', filename='images/img.png') }}"> -->

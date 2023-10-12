@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,500">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <title>Add New User</title>
+</head>
+<body>
+    <div class="nav flex cntr">
+        <h1 class="space" id="title">Enter User Information</h1>
+        <form action="/users">
+            <button type="submit" class="btn_s">Home</button>
+        </form>
+    </div>
+
+    <form action="/users/new" method="POST" class="user_input space cntr border">
+        <!-- User Inputs -->
+        <div class="space">
+            <label for="first_name">First Name: </label>
+            <input type="text" name="first_name">
+        </div>
+        <div class="space">
+            <label for="last_name">Last Name: </label>
+            <input type="text" name="last_name">
+        </div>
+        <div class="space">
+            <label for="email">Email: </label>
+            <input type="text" name="email">
+        </div>
+        <button type="submit" class="btn_s space">Add User</button>
+    </form>
+
+</body>
+</html>
+
+<!-- Format for adding images -->
+<!-- <img src="{{ url_for('static', filename='images/img.png') }}"> -->

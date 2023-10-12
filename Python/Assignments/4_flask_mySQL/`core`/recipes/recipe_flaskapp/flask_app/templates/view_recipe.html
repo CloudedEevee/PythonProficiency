@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <title>Recipe Share | {{this_recipe.name}}</title>
+</head>
+<body>
+    <div class="content cntr">
+        <!-- Navbar -->
+        <div class="nav flex cntr space">
+            <div class="navtop flex separate cntr">
+                <h1 id="title">Welcome, {{session['user_data']['first_name']}} </h1>
+            </div>
+            <div class="navbottom flex separate cntr">
+                <p class="space">Posted by: {{this_recipe.creator.first_name}} {{this_recipe.creator.last_name}}</p>
+                <div class="flex">
+                    <form action="/dashboard">
+                        <input type="hidden" name="which_form" value="dashboard">
+                        <button type="submit" class="btn_s">Dashboard</button>
+                    </form>
+                    <form action="/logout">
+                        <input type="hidden" name="which_form" value="logout">
+                        <button type="submit" class="btn_s">Logout</button>
+                    </form>
+                </div>
+            </div>
+            <hr class="cntr">
+        </div>
+
+        <!-- Flash Verification messages -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="cntr">
+                    {% for message in messages %}
+                        <p class="verify_error"><em>{{message}}</em></p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}    
+
+        <!-- Recipe Info -->
+        <div class="cntr flex border recipe_info space l_bkg">
+
+            <h3 class="recipe_info_title space space_m">{{this_recipe.name}}</h3>
+            
+            <div class="space">
+                <h4>Description: </h4>
+                <p>{{this_recipe.description}}</p>
+            </div>
+            <div class="space">
+                <h4>Under 30 Minutes? </h4>
+                {% if this_recipe.under_30 == 1 %}
+                    <p>Yes</p>
+                {% elif this_recipe.under_30 == 0 %}
+                    <p>No</p>
+                {% endif %}
+            </div>
+            <div class="space">
+                <h4>Instructions: </h4>
+                <p>{{this_recipe.instructions}}</p>
+            </div>
+            <div class="space">
+                <h4>Date Made: </h4>
+                <p>{{ this_recipe.created_at }} </p>
+            </div>
+
+
+        </div>
+
+
+
+
+
+    </div>
+</body>
+</html>
+

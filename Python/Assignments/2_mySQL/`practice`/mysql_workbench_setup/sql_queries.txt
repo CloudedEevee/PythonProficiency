@@ -1,0 +1,22 @@
+SELECT name FROM names;
+
+----------------
+
+INSERT INTO names (name)
+VALUES ("Makayla");
+
+----------------
+
+INSERT INTO names (name)
+Values ("Lee"), ("Brock");
+
+----------------
+
+SET SQL_SAFE_UPDATES = 0;
+
+DELETE from names
+WHERE name = "Brock";
+
+----------------
+
+SELECT * FROM names;

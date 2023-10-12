@@ -1,0 +1,24 @@
+* {
+    font-family: Anybody;
+}
+
+html {
+    background-color: lavender;
+    color: darkslateblue;
+}
+
+#title {
+    color: darkslateblue;
+}
+.cntr {
+    width: 100%;
+    text-align: center;
+    padding: 16px;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <title>Playground | Home</title>
+</head>
+<body>
+    <div class="content cntr">
+        <!-- Navbar -->
+        <div class="nav flex cntr space">
+            <div class="navtop flex separate cntr">
+                <h1 id="title">Playground</h1>
+                <div class="flex">
+                    <form action="{{ url_for('index') }}">
+                        <button type="submit" class="link_btn">Home</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Flash Verification messages -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="cntr">
+                    {% for message in messages %}
+                        <p class="verify_error"><em>{{message}}</em></p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}    
+        <div class="cont_box border flex cntr">
+
+            <!-- Boxes -->
+            {% for i in range(num) %}
+            <div class="color_box border space_m" style="background-color: {{color}};"></div>
+            {% endfor %}
+        </div>
+
+    </div>
+</body>
+</html>
+
+<!-- Format for adding images -->
+<!-- <img src="{{ url_for('static', filename='images/img.png') }}"> -->

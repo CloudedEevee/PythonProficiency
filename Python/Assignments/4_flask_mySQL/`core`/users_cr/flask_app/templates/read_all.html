@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,500">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <title>Read All</title>
+</head>
+<body>
+    <div class="nav flex cntr">
+        <h1 class="space" id="title">All Users</h1>
+        <form action="/">
+            <button type="submit" class="btn_s">Home</button>
+        </form>
+    </div>
+    <table class="cntr">
+        <thead>
+            <tr>
+                <th scope="col">ID</td>
+                <th scope="col">Full Name</td>
+                <th scope="col">Email</td>
+                <th scope="col">Created At</td>
+            </tr>
+        </thead>
+        
+        <tbody>
+            {% for user in all_users %}
+                <tr>
+                    <td>{{user.id}}</td>
+                    <td>{{user.first_name}} {{user.last_name}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.created_at.strftime('%B %d %Y')}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    <form action="/users/new" class="space flex" id="add_new_user">
+        <button type="submit" class="btn_s">Add a New User</button>
+    </form>
+
+</body>
+</html>
+
+<!-- Format for adding images -->
+<!-- <img src="{{ url_for('static', filename='images/img.png') }}"> -->

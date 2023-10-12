@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <title>Playground | Home</title>
+</head>
+<body>
+    <div class="content cntr">
+        <!-- Navbar -->
+        <div class="nav flex cntr space">
+            <div class="navtop flex separate cntr">
+                <h1 id="title">Playground</h1>
+                <div class="flex">
+                    <form action="{{ url_for('index') }}">
+                        <button type="submit" class="link_btn">Home</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cont_box border cntr flex">
+            <form action="{{url_for('play')}}" method="post" class="user_input">
+                <div class="space">
+                    <label for="num">Number</label>
+                    <input type="number" name="num">
+                </div>
+                <div class="space">
+                    <label for="color">Color</label>
+                    <input type="text" name="color" id="color">
+                </div>
+                <button type="submit" class="btn_s space_m">Spawn!</button>
+            </form>
+        </div>
+
+    </div>
+</body>
+</html>
+
+<!-- Format for adding images -->
+<!-- <img src="{{ url_for('static', filename='images/img.png') }}"> -->

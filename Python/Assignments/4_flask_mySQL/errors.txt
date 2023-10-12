@@ -1,0 +1,231 @@
+**if this_user = cls obj
+    use . notation
+**elif this_user = dict
+    use [''] notation
+
+**Can access nested dictionaries with dict['outter']['middle']['inside']['etc']
+    ** . notation is the same way: tree.user.id gets user id attached to the tree
+
+
+
+
+
+AssertionError: View function mapping is overwriting an existing endpoint function: index
+    ++removed duplicate index app.route
+
+AttributeError: 'ImmutableMultiDict' object has no attribute 'email'
+    ++changed data = {'email' : input_data.email, 'password' : input_data.password}
+            to data = {'email' : input_data['email'], 'password' : input_data['password']}
+
+AttributeError: 'dict' object has no attribute 'pw'
+    --referring to user_data
+    ++changed format to include [] around {} in 
+
+AttributeError: 'User' object has no attribute 'password'
+    --referring to:
+        if bcrypt.check_password_hash(this_user.password, form_data['pw']):
+        ...
+    --this_user has attribute 'pw' instead of 'password'
+    ++changed format to:
+        ...(this_user.pw...)
+
+AttributeError: 'str' object has no attribute 'email'
+    --this tells me the data is a string, not a dict with one key-item
+    --printing the request.form: **Only one item, so is string
+        `form_data = testytesty123@aol.com`
+    --form has both items. Something else must be stopping the request.form from getting everything
+        <form action="/" method="post" class="user_input cntr">
+                <input type="hidden" name="which_form" value="login">
+
+                <div>
+                    <label for="email">Email: </label>
+                    <input type="text" name="email" id="email">
+                </div>
+
+                <div>
+                    <label for="pw">Password: </label>
+                    <input type="password" name="pw" id="pw">
+                </div>
+                
+                <button type="submit" class="btn_s">Login</button>
+            </form>
+    --in login(), only passes email from form_data to get_user_by_email
+            @staticmethod
+            def login(form_data):
+                # check users for email
+                this_user = User.get_user_by_email(form_data['email'])
+                ...
+    ++changed format of data within get_user_by_email to:
+        data = {
+            'email' : form_data
+        }
+
+TypeError: 'bool' object is not subscriptable
+    --'bool' object = boolean, not subscriptable = false
+        --boolean came back false
+        --query failed
+    --def show_dojo(cls, dojo_id): 
+        --return cls(results[0])
+    ++changed "SELECT * FROM dojo..." to "... dojos"
+    ++Name of table is plural, not singular. 
+
+TypeError: 'bool' object is not subscriptable*
+        --likely referring to 'password' causing weird name issues. 
+            ++changed col name 'password' to 'pw', any access in flask_app also changed to match
+
+
+
+Something went wrong unsupported operand type(s) for %: 'type' and 'dict'
+    ++ changed "... .query_db(cls, data)" to "...(query, data)"
+
+IndexError: tuple index out of range
+    --return cls(results[0])
+    ++password didn't save
+    ++changed save_user_to_db() query to include 'password', as it was missing from the query
+
+TypeError: Object of type User is not JSON serializable
+    **JSON = JavaScript Objext Notation
+        **Data is 
+            in name/value pairs, 
+            separated by commas, 
+            in curly braces to hold objects, 
+            in square brackets to hold arrays
+
+        **Example: (Formatting is the important aspect)
+            {
+                "employees":[
+                    {"firstName":"John", "lastName":"Doe"},
+                    {"firstName":"Anna", "lastName":"Smith"},
+                    {"firstName":"Peter", "lastName":"Jones"}
+                ]
+            }
+
+    --likely referring to:
+        def get_user_by_email_pw(cls, input_data):
+            data = {
+                'email' : input_data['email'],
+                'password' : input_data['password']
+            }
+
+    --changed to: *NOT SOLUTION*
+        data = {'email' : input_data['email'],
+                'password' : input_data['password']}
+
+    ++changed to:
+        data = [
+            {
+            'email' : input_data['email'],
+            'password' : input_data['password']
+            }
+        ]
+
+    --*DIFFERENT ERROR: TypeError: 'bool' object is not subscriptable*
+        --likely referring to 'password' causing weird name issues. 
+            ++changed col name 'password' to 'pw', any access in flask_app also changed to match
+
+    --*NEW ERROR ON QUERY: Something went wrong format requires a mapping*
+        ++changed ` results = connectToMySQL(cls.DB).query_db(query, data)` 
+            to `... (query, data[0])
+
+    --*NEW ERROR: KeyError: 'password'*
+        --referring to:
+            self.password = data['password']
+        ++changed 'password' above to 'pw'
+
+    --*BACK TO: TypeError: Object of type User is not JSON serializable*
+        --changed:
+
+    --*NEW ERROR: UnboundLocalError: cannot access local variable 'user' where it is not associated with a value*
+        ++changed `user` in:
+                user = user.User.get_user_by_email_pw(request.form)  #hold user information in class object (variable type) to access via . notation
+                user_data = {                       #dictionary variable type
+                    'user_id' : user.id,
+                    'first_name' : user.first_name
+                }
+        --to: `temp_user`
+
+TypeError: string indices must be integers, not 'str'
+    --referring to form_data['email'] in:
+        data = {
+            'email' : form_data['email']
+            }
+    --changed format to: **NOT A SOLUTION
+        data = {
+            'email' : form_data['email']
+        }
+    --changed format to: **NOT A SOLUTION
+        data = {'email' : form_data['email']}
+    --changed format to: **NOT A SOLUTION
+        data = [{'email' : form_data['email']}]
+    ++changed format to:
+        data = {
+            'email' : form_data.email
+        }
+    --*NEW ERROR: AttributeError: 'str' object has no attribute 'email'*
+        --this tells me the data is a string, not a dict with one key-item
+        --printing the request.form: **Only one item, so is string
+            `form_data = testytesty123@aol.com`
+        --form has both items. Something else must be stopping the request.form from getting everything
+            <form action="/" method="post" class="user_input cntr">
+                    <input type="hidden" name="which_form" value="login">
+
+                    <div>
+                        <label for="email">Email: </label>
+                        <input type="text" name="email" id="email">
+                    </div>
+        
+                    <div>
+                        <label for="pw">Password: </label>
+                        <input type="password" name="pw" id="pw">
+                    </div>
+                    
+                    <button type="submit" class="btn_s">Login</button>
+                </form>
+        --in login(), only passes email from form_data to get_user_by_email
+                @staticmethod
+                def login(form_data):
+                    # check users for email
+                    this_user = User.get_user_by_email(form_data['email'])
+                    ...
+        ++changed format of data within get_user_by_email to:
+            data = {
+                'email' : form_data
+            }
+        --*NEW ERROR: AttributeError: 'User' object has no attribute 'password'*
+            --referring to:
+                if bcrypt.check_password_hash(this_user.password, form_data['pw']):
+                ...
+            --this_user has attribute 'pw' instead of 'password'
+            ++changed format to:
+                ...(this_user.pw...)
+
+TypeError: redirect() got an unexpected keyword argument 'form_data'
+    --referring to:
+        return redirect('/add/species', form_data = form_data)
+    ++render_template is what takes parameters like that. 
+        ++there's no template to render for /add/species, so redirect is required.
+        ++put 'form_data' into session and removed `, form_data = form_data` from redirect.
+
+        
+
+
+
+
+
+werkzeug.exceptions.BadRequestKeyError: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+KeyError: 'which_form'
+    --referring to:
+        if request.form['which_form'] == 'register':
+    ++refreshed page
+    
+ValueError: Invalid salt
+    --entered incorrect password for login
+    ++was using unhashed password in db
+        ++deleted improper user, no further issues
+
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'new_tree'. Did you mean 'index' instead?
+    --not importing tree model
+
+
+
+

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,500">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <title>Recipes | Dashboard</title>
+</head>
+<body>
+    <div class="content cntr">
+        <!-- Navbar -->
+        <div class="nav flex cntr space">
+            <div class="navtop flex separate cntr">
+                <h1 id="title">Welcome, {{session['user_data']['first_name']}} </h1>
+            </div>
+            <div class="navbottom flex separate cntr">
+                <p class="space">All Posted Recipes</p>
+                <div class="flex">
+                    <form action="/recipes/create">
+                        <input type="hidden" name="which_form" value="create_recipe">
+                        <button type="submit" class="btn_s">Create a Recipe</button>
+                    </form>
+                    <form action="/logout">
+                        <input type="hidden" name="which_form" value="logout">
+                        <button type="submit" class="btn_s">Logout</button>
+                    </form>
+                </div>
+            </div>
+            <hr class="cntr">
+        </div>
+    
+        <!-- Dashboard Info -->
+        <div class="border cntr">
+            
+            <!-- all_recipes Table -->
+            <div class="space_m l_bkg">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Recipe Name</th>
+                            <th scope="col">Under 30 min?</th>
+                            <th scope="col">Posted By</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for this_recipe in all_recipes %}
+                            <tr>
+                                <td>{{this_recipe.name}}</td>
+
+                                {% if this_recipe.under_30 == 1 %}
+                                <td>Yes</td>
+                                {% elif this_recipe.under_30 == 0 %}
+                                <td>No</td>
+                                {% endif %}
+
+                                <td>{{this_recipe.creator.first_name}} {{this_recipe.creator.last_name}}</td>
+                                <td>
+                                    <p>
+
+                                        <a href="/recipes/view/{{this_recipe.id}}" class="link_btn">view</a>
+                                        {% if this_recipe.creator.id == (session['user_data']['user_id']) %}
+                                            <a href="/recipes/edit/{{this_recipe.id}}" class="link_btn"> | edit | </a>
+                                            <a href="/recipes/delete/{{this_recipe.id}}" class="link_btn">delete</a>
+                                        {% endif %}
+                                    </p>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>    
+    </div>    
+
+
+</body>
+</html>
+
+<!-- Format for adding images -->
+<!-- <img src="{{ url_for('static', filename='images/img.png') }}"> -->
+
+<!-- url_for -->
+<!-- Syntax: url_for(‘<function_name>’,<key> = <value>) -->
+<!-- key/value only needed if app.route calls for a value -->

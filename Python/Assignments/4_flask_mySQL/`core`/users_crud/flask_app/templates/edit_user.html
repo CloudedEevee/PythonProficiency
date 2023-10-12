@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,500">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <title>Edit User</title>
+</head>
+<body>
+    <div class="nav flex cntr">
+        <h1 class="space" id="title">Edit Your Profile</h1>
+        <form action="/users">
+            <button type="submit" class="btn_s">Home</button>
+        </form>
+    </div>
+
+    <div class="border cntr">
+        <!-- Fname, Lname, email: can be changed via form -->
+        <form action="{{url_for('edit_user', user_id = user_data.id)}}" method="POST" class="user_input">
+            <!-- ID and Join Date are not visible as they cannot be edited via user input (form) -->
+            <input type="hidden" name="id" value="{{user_data.id}}">
+
+            <!-- User Info * 3 -->
+            <div class="space">
+                <label for="first_name">First Name: </label>
+                <input type="text" name="first_name" value="{{user_data.first_name}}">
+            </div>
+
+            <div class="space">
+                <label for="last_name">Last Name: </label>
+                <input type="text" name="last_name" value="{{user_data.last_name}}">
+            </div>
+
+            <div class="space">
+                <label for="email">Email: </label>
+                <input type="text" name="email" value="{{user_data.email}}">
+            </div>
+    
+            <input type="hidden" name="updated_at" value="{{user_data.updated_at}}">
+            <!-- Actions -->
+            <div class="flex separate">
+                <button type="reset" class="link-btn">Cancel</button>
+                <button type="submit" class="btn_s">Save</button>    
+            </div>
+
+        </form>
+    </div>
+
+    <!-- DANGER ZONE -->
+        <div class="flex danger_zone">
+                <form action="{{ url_for('delete_user', user_id = user_data.id) }}" method="POST">
+                    <button type="submit" class="link-btn" id="danger_btn">Delete Account</button>
+                </form>
+
+        </div>
+
+</body>
+</html>
+
+<!-- Format for adding images -->
+<!-- <img src="{{ url_for('static', filename='images/img.png') }}"> -->

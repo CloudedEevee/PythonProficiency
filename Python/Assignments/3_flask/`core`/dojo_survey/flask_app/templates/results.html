@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <title>Dojo Survey</title>
+</head>
+<body>
+    <div class="content cntr">
+
+        <div class="cont_box cntr border">
+            <p class="title">
+                Your Name: {{request.form['your_name']}}
+            </p>
+            <p class="title">
+                Dojo Location: {{request.form['location']}}
+            </p>
+            <p class="title">
+                Favorite Language: {{request.form['fave_language']}}
+            </p>
+            <p class="title">
+                Completed Languages {{request.form['comp_lang']}}
+            </p>
+        </div>
+
+    </div>
+</body>
+</html>
+
+<!-- Format for adding images -->
+<!-- <img src="{{ url_for('static', filename='images/img.png') }}"> -->

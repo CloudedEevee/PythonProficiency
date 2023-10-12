@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <title>Dojo Survey</title>
+</head>
+<body>
+    <div class="content cntr">
+        <h1 class="space space_m">Survey</h1>
+        <form action="/results" method="post" class="user_input border cont_box cntr">
+            <div class="space space_m">
+                <label for="your_name">Your Name: </label>
+                <input type="text" name="your_name">
+            </div>
+            <div class="space space_m">
+                <label for="location">Dojo Location: </label>
+                <select name="location" id="location">
+                    <option value="San Jose">San Jose</option>
+                    <option value="Seattle">Seattle</option>
+                    <option value="Dallas">Dallas</option>
+                    <option value="Chicago">Chicago</option>
+                </select>
+            </div>
+            <div class="space space_m">
+                <div>
+                    <label for="fave_language">Favorite Language: </label>
+                </div>
+
+                <label for="python">
+                    <input type="radio" name="fave_language" id="python" class="inline" value="Python"> <span>Python</span>
+                </label>
+                <label for="java">
+                    <input type="radio" name="fave_language" id="java" class="inline" value="Java"> <span>Java</span>
+                </label>
+                <label for="javascript">
+                    <input type="radio" name="fave_language" id="javascript" class="inline" value="JavaScript"> <span>JavaScript</span>
+                </label>
+            </div>
+
+            <div class="space space_m">
+                <div>
+                    <label for="comp_lang">Select your completed languages: </label>
+                </div>
+                <label for="python">
+                    <input type="checkbox" name="comp_lang" id="python" value="Python" class="inline">
+                    <span>Python</span>
+                </label>
+                <label for="java">
+                    <input type="checkbox" name="comp_lang" id="java" value="Java" class="inline">
+                    <span>Java</span>
+                </label>
+                <label for="mern">
+                    <input type="checkbox" name="comp_lang" id="mern" value="MERN" class="inline">
+                    <span>MERN</span>
+                </label>
+            </div>
+            <button type="submit" class="btn_s">Submit</button>
+        </form>
+        
+    </div>
+</body>
+</html>
+
+<!-- Format for adding images -->
+<!-- <img src="{{ url_for('static', filename='images/img.png') }}"> -->

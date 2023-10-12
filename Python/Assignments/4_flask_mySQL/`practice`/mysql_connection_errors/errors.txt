@@ -1,0 +1,9 @@
+"ImportError: cannot import name 'friend' from 'flask_app'"
+    *Broke Server*
+    - Removed `.models` from `flask_app.models` in friends.py line 3
+
+"NameError: name 'Friend' is not defined"
+    - Added `friend = Friend.get_all()    to Index.HTML
+             print(friends)`
+
+    - Won't retrieve flask_app.models

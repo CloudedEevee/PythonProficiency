@@ -1,0 +1,319 @@
+/************************* All *************************/
+
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    font-family: Roboto;
+}
+
+html {
+    background-color: lavender;
+    color: darkslateblue;
+}
+
+body {
+    width: 96vw;
+    padding: 16px;
+    margin: auto;
+
+    flex-wrap: nowrap;
+}
+
+
+/********************* GENERAL CONTENT *********************/
+.space {
+    padding: 8px;
+}
+.space_m {
+    margin: 8px;
+}
+.cntr {
+    width: 100%;
+    text-align: center;
+    margin: auto;
+}
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.vert_cntr {
+    align-self: center;
+}
+.separate {
+    justify-content: space-between;
+}
+.start {
+    justify-content: start;
+}
+.end {
+    justify-content: end;
+}
+
+.border {
+    width: max-content;
+    border: 4px inset rgb(41, 38, 70);
+    padding: 16px;
+}
+
+#title {
+    font-size: 24pt;
+    color: darkslateblue;
+}
+
+.content {
+    min-width: 540px;
+    max-width: 720px;
+}
+
+
+.cont_box {
+    width: 360px;
+    height: 400px;
+    background-color: rgb(241, 246, 251);
+}
+
+.l_bkg {
+    background-color: rgb(241, 246, 251);
+}
+
+
+
+/********************* ELEMENT SPECIFIC *********************/
+.nav {
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+.nav hr {
+    border: 1px solid darkslateblue;
+    margin-top: 8px;
+}
+
+/* -------------- Forms --------------*/
+/*-- fieldset and legend --*/
+fieldset {
+    margin: 2em 0;
+    padding: 1em 2em;
+    border: solid 1px rgba(71, 61, 139, 0.519);
+    border-radius: 6px;
+    box-shadow: 1px -2px 1px rgba(71, 61, 139, 0.519);
+    min-width: 500px;
+
+    align-items: start;
+}
+legend {
+    font-size: 1.25em;
+    padding: 0 .25em;
+    color: darkslateblue;
+    text-align: start;
+    border-radius: 6px;
+    box-shadow: 0px -2px 1px rgba(71, 61, 139, 0.519);
+}
+
+/*-- labels --*/
+label {
+    display: block;
+    margin-top: 1em;
+}
+label:first-of-type {
+    margin-top: 0;
+}
+.checks label {
+    margin-top: 0;
+}
+
+/*-- inputs & textarea --*/
+input {
+    padding: .5em;
+    border: solid 1px rgb(103, 99, 141)
+}
+input[type="text"] {
+    width: 15em;
+}
+textarea {
+    min-width: 80%;
+    min-height: 5em;
+    padding: .5em;
+    border: solid 1px rgb(103, 99, 141);
+}
+
+/*-- radio & checks --*/
+.checks {
+    display: block;
+    margin-bottom: 1em;
+}
+.checks p {
+    margin-bottom: 0;
+}
+
+input[type = "checkbox"] + label, input[type = "radio"] + label {
+    display: inline-block;
+    padding-top: 0;
+    margin-top: 0;
+}
+input[type = "radio"] {
+    margin-left: 1.5em;
+    margin-right: 0;
+}
+input[type = "radio"]:first-of-type {
+    margin-left: 0;
+}
+
+.form_r button[type = "submit"] {
+    width: min-content;
+    padding: .5em 1em;
+    align-self: center;
+}
+
+/*-- combos --*/
+.form_item {
+    display: block;
+    margin-top: 1em;
+}
+.form_l, .form_r {
+    height: 345px;
+    display: inline-block;
+    flex: 1;
+    
+}
+.form_r {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+/* -------------- Tables --------------*/
+table {
+    min-width: 350px;
+    margin: .5em 0;
+    border-collapse: collapse;
+    text-align: center;
+}
+table, thead{
+    border: 2px inset rgb(41, 38, 70);
+}
+thead {
+    background-color: rgb(217, 217, 249);
+    font-size: 16pt;
+}
+th, td {
+    padding: .5em;
+}
+td {
+    padding-bottom: 1em;
+}
+table a:last-of-type {
+    margin-right: .5em;
+}
+
+/* -------------- Links --------------*/
+/*-- buttons --*/
+.btn_s {
+    background-color: aliceblue;
+    color: rgb(103, 99, 141);
+    font-size: 12pt;
+
+    border-color: rgb(4, 4, 35);
+    border-style: solid;
+    box-shadow: 2px 2px rgb(4, 4, 35);
+
+    padding: 4px 8px;
+    margin-left: .5em;
+}
+.btn_s:hover {
+    background-color: rgb(41, 38, 70);
+    color: aliceblue;
+
+    border: 2px inset aliceblue;
+    box-shadow: none;
+
+    transition-duration: 50ms
+}
+.btn_s_s {
+    background-color: aliceblue;
+    color: rgb(103, 99, 141);
+    font-size: 10pt;
+
+    border-color: rgb(4, 4, 35);
+    border-style: solid;
+    box-shadow: 2px 2px rgb(4, 4, 35);
+
+    padding: 1px 4px;
+}
+.btn_s_s:hover {
+    background-color: rgb(41, 38, 70);
+    color: aliceblue;
+
+    border: 2px inset aliceblue;
+    box-shadow: none;
+
+    transition-duration: 50ms
+}
+/*-- hrefs --*/
+.link_btn {
+    background: none;
+    border: none;
+    color: rgb(103, 99, 141);
+    cursor: pointer;
+    padding-left: 4px;
+    font-size: 12pt;
+    text-decoration: none;
+}
+.link_btn:hover {
+    color: rgb(41, 38, 70);
+}
+
+/*-- danger zone --*/
+#danger_btn {
+    background-color: lavenderblush;
+    color: crimson;
+    font-size: 10pt;
+
+    border-color: darkred;
+    border-style: solid;
+    box-shadow: 2px 2px rgb(54, 8, 8);
+
+    padding: 4px 8px;
+}
+#danger_btn:hover {
+    background-color: crimson;
+    color: lavenderblush;
+
+    border: 2px inset rgb(54, 8, 8);
+    box-shadow: none;
+
+    transition-duration: 50ms
+}
+
+/*-- verifications --*/
+.verify_error {
+    color: brown;
+}
+
+
+
+
+/* -------------- Data Display Box --------------*/
+.recipe_info {
+    display: block;
+    width: 540px;
+    height: min-content;
+}
+
+.recipe_info_title {
+    display: block;
+}
+
+.recipe_info div {
+    margin: 1.5em;
+
+}
+.recipe_info div h4 {
+    text-align: start;
+}
+.recipe_info div p {
+    text-align: start;
+}
+

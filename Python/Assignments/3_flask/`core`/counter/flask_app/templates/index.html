@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <title>Counter</title>
+</head>
+<body>
+    <div class="content cntr">
+        <h1>Welcome to the Counter</h1>
+        <div>
+            <h2 class="space space_m">You've been here</h2>
+            <h3>{{session.visits}} times</h3>
+        </div>
+        <div class="flex cntr space space_m">
+            <form action="/process" method="POST" class="user_input">
+                <input type="hidden" name="which_button" value="plus_one">
+                <button type="submit" class="btn_s">Revisit</button>
+            </form>
+            
+            <form action="/process" method="POST" class="user_input">
+                <input type="hidden" name="which_button" value="plus_two">
+                <button type="submit" class="btn_s">Add 2 Visits</button>
+            </form>
+
+            <form action="/process" method="POST" class="user_input">
+                <input type="hidden" name="which_button" value="reset">
+                <button type="submit" class="btn_s">Delete all Visits</button>
+            </form>
+        </div>
+
+        <div class="flex cntr">
+            <form action="/process" method="POST" class="user_input">
+                <input type="hidden" name="which_button" value="choose_inc">
+                <input type="number" name="num_inc" id="num_inc">
+                <button type="submit" class="btn_s">Increment Visits</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+<!-- Format for adding images -->
+<!-- <img src="{{ url_for('static', filename='images/img.png') }}"> -->

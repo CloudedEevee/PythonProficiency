@@ -1,0 +1,75 @@
+##### Create 3 new dojos
+INSERT INTO dojos (name)
+VALUES ("Seattle"), ("San Antonio"), ("London");
+
+
+##### Delete the 3 dojos you just created
+SET SQL_SAFE_UPDATES = 0;
+
+DELETE from dojos
+WHERE name = "Seattle" OR name = "San Antonio" OR name = "London";
+
+
+##### Create 3 more dojos
+INSERT INTO dojos (name)
+VALUES ("Los Angeles"), ("Montreal"), ("Tokyo");
+
+
+##### Create 3 ninjas that belong to the first dojo
+INSERT INTO ninjas (first_name, last_name, age, dojo_id)
+VALUES
+("Jerry", "Smith", 35, 4),
+("Jimothy", "Crickette", 55, 4),
+("Tomathy", "Beth", 69, 4);
+
+
+##### Create 3 ninjas that belong to the second dojo
+INSERT INTO ninjas (first_name, last_name, age, dojo_id)
+VALUES
+("Beverly", "Brioche",  37, 5),
+("Jacques", "Cousteau", 87, 5),
+("Clifford", "Clementine", 97, 5);
+
+
+##### Create 3 ninjas that belong to the third dojo
+INSERT INTO ninjas (first_name, last_name, age, dojo_id)
+VALUES
+("Hayao", "Mayazaki", 64, 6),
+("Mistu", "Bishi", 24, 6),
+("Aki", "Kanada", 84, 6);
+
+
+##### Retrieve all the ninjas from the first dojo
+SELECT * FROM ninjas
+INNER JOIN dojos ON dojos.id = ninjas.dojo_id
+WHERE ninjas.dojo_id = 4;
+
+
+##### Retrieve all the ninjas from the last dojo
+SELECT * FROM ninjas
+INNER JOIN dojos ON dojos.id = ninjas.dojo_id
+WHERE ninjas.dojo_id = 6;
+
+
+##### Retrieve the last ninja's dojo
+SELECT * FROM ninjas
+JOIN dojos ON dojos.id = ninjas.dojo_id
+ORDER BY ninjas.id DESC
+LIMIT 1;
+
+
+##### Use a JOIN to retrieve the ninja with id its dojo data.
+SELECT * FROM ninjas
+JOIN dojos ON dojos.id = ninjas.dojo_id
+WHERE ninjas.id = 6;
+
+
+##### Use a JOIN to retrieve all the ninjas and that ninja's dojo
+SELECT * FROM ninjas
+JOIN dojos ON dojos.id = ninjas.dojo_id;
+
+
+
+
+
+

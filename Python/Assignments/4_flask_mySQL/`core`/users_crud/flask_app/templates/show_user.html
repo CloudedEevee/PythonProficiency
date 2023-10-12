@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,500">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <title>Show User</title>
+</head>
+<body>
+    <div class="nav flex cntr">
+        <h1 class="space" id="title">Your Profile</h1>
+        <form action="/users">
+            <button type="submit" class="btn_s">Home</button>
+        </form>
+    </div>
+
+    <div class="border cntr">
+        <div class="user_info">
+            <h3>ID</h3>
+            <p class="cntr">{{user_data.id}}</p>
+        </div>
+
+        <div class="user_info">
+            <h3>Full Name</h3>
+            <p class="cntr">{{user_data.first_name}} {{user_data.last_name}}</p>
+        </div>
+
+        <div class="user_info">
+            <h3>Email</h3>
+            <p class="cntr">{{user_data.email}}</p>
+        </div>
+
+        <div class="user_info">
+            <h3>Join Date</h3>
+            <p class="cntr">{{user_data.created_at.strftime('%B %d %Y')}}</p>
+        </div>
+
+        <div class="actions flex">
+            <p class="space">
+                <a href="{{ url_for('edit_user', user_id = user_data.id) }} ">Edit</a>
+                <form action="{{ url_for('delete_user', user_id = user_data.id) }}" method="POST">
+                    <button type="submit" class="link-btn">Delete</button>
+                </form>
+            </p>
+        </div>
+    </div>
+
+    <div class="space flex">
+        <form action="/users/new" id="add_new_user">
+            <button type="submit" class="btn_s">Add a New User</button>
+        </form>
+    </div>
+
+</body>
+</html>
+
+<!-- Format for adding images -->
+<!-- <img src="{{ url_for('static', filename='images/img.png') }}"> -->
